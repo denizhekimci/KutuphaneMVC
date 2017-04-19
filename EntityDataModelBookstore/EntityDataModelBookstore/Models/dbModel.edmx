@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="dbModelStoreContainer">
+          <EntitySet Name="Address" EntityType="dbModel.Store.Address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Author" EntityType="dbModel.Store.Author" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Author_Book" EntityType="dbModel.Store.Author_Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Book" EntityType="dbModel.Store.Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="dbModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category_Book" EntityType="dbModel.Store.Category_Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="dbModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supplier" EntityType="dbModel.Store.Supplier" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supplier_Book" EntityType="dbModel.Store.Supplier_Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="dbModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Address_Country" Association="dbModel.Store.FK_Address_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Address" Association="dbModel.Store.FK_Author_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Author" EntitySet="Author" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Book_Author" Association="dbModel.Store.FK_Author_Book_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Author_Book" EntitySet="Author_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Book_Book" Association="dbModel.Store.FK_Author_Book_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Author_Book" EntitySet="Author_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Book_Book" Association="dbModel.Store.FK_Category_Book_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Category_Book" EntitySet="Category_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Book_Category" Association="dbModel.Store.FK_Category_Book_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category_Book" EntitySet="Category_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Address" Association="dbModel.Store.FK_Supplier_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Book_Supplier" Association="dbModel.Store.FK_Supplier_Book_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Supplier_Book" EntitySet="Supplier_Book" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Body" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author_Book">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category_Book">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier_Book">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Address_Country">
+          <End Role="Country" Type="dbModel.Store.Country" Multiplicity="1" />
+          <End Role="Address" Type="dbModel.Store.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Address">
+          <End Role="Address" Type="dbModel.Store.Address" Multiplicity="1" />
+          <End Role="Author" Type="dbModel.Store.Author" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Book_Author">
+          <End Role="Author" Type="dbModel.Store.Author" Multiplicity="1" />
+          <End Role="Author_Book" Type="dbModel.Store.Author_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author_Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Book_Book">
+          <End Role="Book" Type="dbModel.Store.Book" Multiplicity="1" />
+          <End Role="Author_Book" Type="dbModel.Store.Author_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author_Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Book_Book">
+          <End Role="Book" Type="dbModel.Store.Book" Multiplicity="1" />
+          <End Role="Category_Book" Type="dbModel.Store.Category_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category_Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Book_Category">
+          <End Role="Category" Type="dbModel.Store.Category" Multiplicity="1" />
+          <End Role="Category_Book" Type="dbModel.Store.Category_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category_Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Address">
+          <End Role="Address" Type="dbModel.Store.Address" Multiplicity="1" />
+          <End Role="Supplier" Type="dbModel.Store.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Book_Supplier">
+          <End Role="Supplier" Type="dbModel.Store.Supplier" Multiplicity="1" />
+          <End Role="Supplier_Book" Type="dbModel.Store.Supplier_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier_Book">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="dbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="dbModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="dbModel.Address" />
+          <EntitySet Name="Author" EntityType="dbModel.Author" />
+          <EntitySet Name="Author_Book" EntityType="dbModel.Author_Book" />
+          <EntitySet Name="Book" EntityType="dbModel.Book" />
+          <EntitySet Name="Category" EntityType="dbModel.Category" />
+          <EntitySet Name="Category_Book" EntityType="dbModel.Category_Book" />
+          <EntitySet Name="Country" EntityType="dbModel.Country" />
+          <EntitySet Name="Supplier" EntityType="dbModel.Supplier" />
+          <EntitySet Name="Supplier_Book" EntityType="dbModel.Supplier_Book" />
+          <EntitySet Name="sysdiagrams" EntityType="dbModel.sysdiagrams" />
+          <AssociationSet Name="FK_Address_Country" Association="dbModel.FK_Address_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Address" Association="dbModel.FK_Author_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Author" EntitySet="Author" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Address" Association="dbModel.FK_Supplier_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Book_Author" Association="dbModel.FK_Author_Book_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Author_Book" EntitySet="Author_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Book_Book" Association="dbModel.FK_Author_Book_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Author_Book" EntitySet="Author_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Book_Book" Association="dbModel.FK_Category_Book_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Category_Book" EntitySet="Category_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Book_Category" Association="dbModel.FK_Category_Book_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category_Book" EntitySet="Category_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Book_Supplier" Association="dbModel.FK_Supplier_Book_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Supplier_Book" EntitySet="Supplier_Book" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="dbModel.FK_Address_Country" FromRole="Address" ToRole="Country" />
+          <NavigationProperty Name="Author" Relationship="dbModel.FK_Author_Address" FromRole="Address" ToRole="Author" />
+          <NavigationProperty Name="Supplier" Relationship="dbModel.FK_Supplier_Address" FromRole="Address" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Surname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birthday" />
+          <Property Type="Boolean" Name="Gender" />
+          <Property Type="Int32" Name="AddressId" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="dbModel.FK_Author_Address" FromRole="Author" ToRole="Address" />
+          <NavigationProperty Name="Author_Book" Relationship="dbModel.FK_Author_Book_Author" FromRole="Author" ToRole="Author_Book" />
+        </EntityType>
+        <EntityType Name="Author_Book">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Type="Int32" Name="AuthorId" Nullable="false" />
+          <Property Type="Int32" Name="BookId" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="dbModel.FK_Author_Book_Author" FromRole="Author_Book" ToRole="Author" />
+          <NavigationProperty Name="Book" Relationship="dbModel.FK_Author_Book_Book" FromRole="Author_Book" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Precision="19" Scale="4" />
+          <Property Type="String" Name="Image" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Author_Book" Relationship="dbModel.FK_Author_Book_Book" FromRole="Book" ToRole="Author_Book" />
+          <NavigationProperty Name="Category_Book" Relationship="dbModel.FK_Category_Book_Book" FromRole="Book" ToRole="Category_Book" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category_Book" Relationship="dbModel.FK_Category_Book_Category" FromRole="Category" ToRole="Category_Book" />
+        </EntityType>
+        <EntityType Name="Category_Book">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="Int32" Name="BookId" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="dbModel.FK_Category_Book_Book" FromRole="Category_Book" ToRole="Book" />
+          <NavigationProperty Name="Category" Relationship="dbModel.FK_Category_Book_Category" FromRole="Category_Book" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="dbModel.FK_Address_Country" FromRole="Country" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SupplierName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AddressId" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="dbModel.FK_Supplier_Address" FromRole="Supplier" ToRole="Address" />
+          <NavigationProperty Name="Supplier_Book" Relationship="dbModel.FK_Supplier_Book_Supplier" FromRole="Supplier" ToRole="Supplier_Book" />
+        </EntityType>
+        <EntityType Name="Supplier_Book">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Type="Int32" Name="SupplierId" Nullable="false" />
+          <Property Type="Int32" Name="BookId" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="dbModel.FK_Supplier_Book_Supplier" FromRole="Supplier_Book" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Address_Country">
+          <End Type="dbModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="dbModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Address">
+          <End Type="dbModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="dbModel.Author" Role="Author" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Address">
+          <End Type="dbModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="dbModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Book_Author">
+          <End Type="dbModel.Author" Role="Author" Multiplicity="1" />
+          <End Type="dbModel.Author_Book" Role="Author_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author_Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Book_Book">
+          <End Type="dbModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="dbModel.Author_Book" Role="Author_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author_Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Book_Book">
+          <End Type="dbModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="dbModel.Category_Book" Role="Category_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category_Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Book_Category">
+          <End Type="dbModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="dbModel.Category_Book" Role="Category_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category_Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Book_Supplier">
+          <End Type="dbModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="dbModel.Supplier_Book" Role="Supplier_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier_Book">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="dbModel" />
+        <Alias Key="Target" Value="dbModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="dbModelContainer" StorageEntityContainer="dbModelStoreContainer">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="dbModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="dbModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Author_Book">
+            <EntityTypeMapping TypeName="dbModel.Author_Book">
+              <MappingFragment StoreEntitySet="Author_Book">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book">
+            <EntityTypeMapping TypeName="dbModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="dbModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category_Book">
+            <EntityTypeMapping TypeName="dbModel.Category_Book">
+              <MappingFragment StoreEntitySet="Category_Book">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="dbModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="dbModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier_Book">
+            <EntityTypeMapping TypeName="dbModel.Supplier_Book">
+              <MappingFragment StoreEntitySet="Supplier_Book">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="dbModel" >
+        <EntityTypeShape EntityType="dbModel.Address" Width="1.5" PointX="3" PointY="2.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="dbModel.Author" Width="1.5" PointX="5.25" PointY="1.125" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="dbModel.Author_Book" Width="1.5" PointX="7.5" PointY="1.5" Height="1.7879850260416657" />
+        <EntityTypeShape EntityType="dbModel.Book" Width="1.5" PointX="5.25" PointY="8.25" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="dbModel.Category" Width="1.5" PointX="5.25" PointY="11.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="dbModel.Category_Book" Width="1.5" PointX="7.5" PointY="8.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="dbModel.Country" Width="1.5" PointX="0.75" PointY="3" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="dbModel.Supplier" Width="1.5" PointX="5.25" PointY="4.375" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="dbModel.Supplier_Book" Width="1.5" PointX="7.5" PointY="4.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="dbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" Height="1.9802864583333317" />
+        <AssociationConnector Association="dbModel.FK_Address_Country" >
+          <ConnectorPoint PointX="2.25" PointY="3.797841796875" />
+          <ConnectorPoint PointX="3" PointY="3.797841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_Author_Address" >
+          <ConnectorPoint PointX="4.5" PointY="3.1535953776041663" />
+          <ConnectorPoint PointX="5.25" PointY="3.1535953776041663" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_Supplier_Address" >
+          <ConnectorPoint PointX="4.5" PointY="4.6824446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="4.6824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_Author_Book_Author" >
+          <ConnectorPoint PointX="6.75" PointY="2.3939925130208328" />
+          <ConnectorPoint PointX="7.5" PointY="2.3939925130208328" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_Author_Book_Book" >
+          <ConnectorPoint PointX="6.75" PointY="8.2511528461538468" />
+          <ConnectorPoint PointX="7.125" PointY="7.8761528461538468" />
+          <ConnectorPoint PointX="7.125" PointY="2.8722407695312491" />
+          <ConnectorPoint PointX="7.5" PointY="2.8722407695312491" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_Category_Book_Book" >
+          <ConnectorPoint PointX="6.75" PointY="9.3939925130208337" />
+          <ConnectorPoint PointX="7.5" PointY="9.3939925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_Category_Book_Category" >
+          <ConnectorPoint PointX="6.75" PointY="12.422841796875" />
+          <ConnectorPoint PointX="8.25" PointY="12.422841796875" />
+          <ConnectorPoint PointX="8.25" PointY="10.287985026041667" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbModel.FK_Supplier_Book_Supplier" >
+          <ConnectorPoint PointX="6.75" PointY="5.547841796875" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="5.5478417968749989" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="5.547841796875" />
+          <ConnectorPoint PointX="7.5" PointY="5.547841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

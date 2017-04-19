@@ -1,0 +1,4 @@
+C:\Users\Toshiba\Desktop\test\EntityDataModelBookstore\EntityDataModelBookstore\bin\EntityDataModelBookstore.dll
+C:\Users\Toshiba\Desktop\test\EntityDataModelBookstore\EntityDataModelBookstore\bin\EntityDataModelBookstore.pdb
+C:\Users\Toshiba\Desktop\test\EntityDataModelBookstore\EntityDataModelBookstore\obj\Debug\EntityDataModelBookstore.dll
+C:\Users\Toshiba\Desktop\test\EntityDataModelBookstore\EntityDataModelBookstore\obj\Debug\EntityDataModelBookstore.pdb
