@@ -479,7 +479,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -603,51 +603,51 @@
     <edmx:Diagrams>
       <Diagram Name="dbModel" >
         <EntityTypeShape EntityType="dbModel.Address" Width="1.5" PointX="3" PointY="2.625" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="dbModel.Author" Width="1.5" PointX="5.25" PointY="1.125" Height="2.5571907552083326" />
-        <EntityTypeShape EntityType="dbModel.Author_Book" Width="1.5" PointX="7.5" PointY="1.5" Height="1.7879850260416657" />
+        <EntityTypeShape EntityType="dbModel.Author" Width="1.5" PointX="5.25" PointY="1.125" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="dbModel.Author_Book" Width="1.5" PointX="7.5" PointY="1.5" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="dbModel.Book" Width="1.5" PointX="5.25" PointY="8.25" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="dbModel.Category" Width="1.5" PointX="5.25" PointY="11.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="dbModel.Category" Width="1.5" PointX="5.25" PointY="11.625" Height="1.5956835937500031" />
         <EntityTypeShape EntityType="dbModel.Category_Book" Width="1.5" PointX="7.5" PointY="8.5" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="dbModel.Country" Width="1.5" PointX="0.75" PointY="3" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="dbModel.Supplier" Width="1.5" PointX="5.25" PointY="4.375" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="dbModel.Supplier_Book" Width="1.5" PointX="7.5" PointY="4.75" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="dbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="dbModel.Country" Width="1.5" PointX="0.75" PointY="3" Height="1.5956835937500027" />
+        <EntityTypeShape EntityType="dbModel.Supplier" Width="1.5" PointX="5.25" PointY="4.375" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="dbModel.Supplier_Book" Width="1.5" PointX="7.5" PointY="4.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="dbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" Height="1.9802864583333388" />
         <AssociationConnector Association="dbModel.FK_Address_Country" >
-          <ConnectorPoint PointX="2.25" PointY="3.797841796875" />
-          <ConnectorPoint PointX="3" PointY="3.797841796875" />
+          <ConnectorPoint PointX="2.25" PointY="3.7978417968750016" />
+          <ConnectorPoint PointX="3" PointY="3.7978417968750016" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_Author_Address" >
-          <ConnectorPoint PointX="4.5" PointY="3.1535953776041663" />
-          <ConnectorPoint PointX="5.25" PointY="3.1535953776041663" />
+          <ConnectorPoint PointX="4.5" PointY="3.1535953776041659" />
+          <ConnectorPoint PointX="5.25" PointY="3.1535953776041659" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_Supplier_Address" >
           <ConnectorPoint PointX="4.5" PointY="4.6824446614583337" />
           <ConnectorPoint PointX="5.25" PointY="4.6824446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_Author_Book_Author" >
-          <ConnectorPoint PointX="6.75" PointY="2.3939925130208328" />
-          <ConnectorPoint PointX="7.5" PointY="2.3939925130208328" />
+          <ConnectorPoint PointX="6.75" PointY="2.3939925130208337" />
+          <ConnectorPoint PointX="7.5" PointY="2.3939925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_Author_Book_Book" >
           <ConnectorPoint PointX="6.75" PointY="8.2511528461538468" />
           <ConnectorPoint PointX="7.125" PointY="7.8761528461538468" />
-          <ConnectorPoint PointX="7.125" PointY="2.8722407695312491" />
-          <ConnectorPoint PointX="7.5" PointY="2.8722407695312491" />
+          <ConnectorPoint PointX="7.125" PointY="2.8722407695312513" />
+          <ConnectorPoint PointX="7.5" PointY="2.8722407695312513" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_Category_Book_Book" >
           <ConnectorPoint PointX="6.75" PointY="9.3939925130208337" />
           <ConnectorPoint PointX="7.5" PointY="9.3939925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_Category_Book_Category" >
-          <ConnectorPoint PointX="6.75" PointY="12.422841796875" />
-          <ConnectorPoint PointX="8.25" PointY="12.422841796875" />
+          <ConnectorPoint PointX="6.75" PointY="12.422841796875002" />
+          <ConnectorPoint PointX="8.25" PointY="12.422841796875002" />
           <ConnectorPoint PointX="8.25" PointY="10.287985026041667" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_Supplier_Book_Supplier" >
-          <ConnectorPoint PointX="6.75" PointY="5.547841796875" />
-          <ConnectorPoint PointX="7.041666666666667" PointY="5.5478417968749989" />
-          <ConnectorPoint PointX="7.208333333333333" PointY="5.547841796875" />
-          <ConnectorPoint PointX="7.5" PointY="5.547841796875" />
+          <ConnectorPoint PointX="6.75" PointY="5.5478417968750016" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="5.5478417968750007" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="5.5478417968750016" />
+          <ConnectorPoint PointX="7.5" PointY="5.5478417968750016" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

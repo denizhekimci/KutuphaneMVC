@@ -9,8 +9,8 @@
             <div class="row placeholders">
                 <asp:Repeater ID="BookList" runat="server">
                     <ItemTemplate>
-                        <div class="col-xs-6 col-sm-3 placeholder">
-                            <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"><h4><%#Eval("Price") %></h4>
+                        <div class="col-xs-6 col-sm-3">
+                            <img src=<%#Eval("Image") %> alt=<%#Eval("Image") %> width="200px" height="200px"><h4><%#Eval("Price","{0:C}") %></h4>
                             <span class="text-muted"><%#Eval("BookName") %></span>
                         </div>
                     </ItemTemplate>

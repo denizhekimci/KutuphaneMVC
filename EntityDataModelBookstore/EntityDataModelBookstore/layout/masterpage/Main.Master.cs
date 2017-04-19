@@ -11,7 +11,12 @@ namespace EntityDataModelBookstore.layout.masterpage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                string keyword = TxtSearch.Text.Trim();
+                string url = String.Format("~/Books.aspx?keyword={0}",keyword);
+                Response.Redirect(url);
+            }
         }
     }
 }

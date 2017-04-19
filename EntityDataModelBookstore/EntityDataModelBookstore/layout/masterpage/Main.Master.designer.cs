@@ -31,6 +31,15 @@ namespace EntityDataModelBookstore.layout.masterpage {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// TxtSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtSearch;
+        
+        /// <summary>
         /// fullContentPlaceHolder control.
         /// </summary>
         /// <remarks>
